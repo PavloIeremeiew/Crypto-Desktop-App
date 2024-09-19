@@ -19,17 +19,7 @@ namespace CryptoApp
         public App()
         {
             IServiceCollection services = new ServiceCollection();
-
-            services.AddSingleton<MainWindow>(provider => new MainWindow()
-            {
-                DataContext = provider.GetRequiredService<MainViewModel>()
-            });
-            services.AddSingleton<MainViewModel>();
-            services.AddSingleton<HomeViewModel>();
-            services.AddSingleton<InfoViewModel>();
-            services.AddSingleton<INavigationService,NavigationService>();
-
-            services.AddSingleton<Func<Type, ViewModel>>(provider => viewType => (ViewModel)provider.GetRequiredService(viewType));
+            ConfigureServices(services);
 
             _serviceProvider = services.BuildServiceProvider();
         }
@@ -38,6 +28,24 @@ namespace CryptoApp
             var mainWindow = _serviceProvider.GetRequiredService<MainWindow>();
             mainWindow.Show();
             base.OnStartup(e);
+        }
+        private static void ConfigureServices(IServiceCollection services)
+        {
+            services.AddHttpClient();
+            services.AddHttpClient("CryptoСurrenciesList", client =>
+            {
+                client.BaseAddress = new Uri("https://api.coincap.io/v2/assets");
+            });
+            services.AddSingleton<MainWindow>(provider => new MainWindow()
+            {
+                DataContext = provider.GetRequiredService<MainViewModel>()
+            });
+            services.AddSingleton<MainViewModel>();
+            services.AddSingleton<HomeViewModel>();
+            services.AddSingleton<InfoViewModel>();
+            services.AddSingleton<INavigationService, NavigationService>();
+
+            services.AddSingleton<Func<Type, ViewModel>>(provider => viewType => (ViewModel)provider.GetRequiredService(viewType));
         }
     }
 

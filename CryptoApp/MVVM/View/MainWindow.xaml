@@ -15,6 +15,17 @@
         <StackPanel Grid.Column="0">
             <Button Content="Home" Command="{Binding Path= NavigateToHomeViewComand}"/>
             <Button Content="Info" Command="{Binding Path= NavigateToInfoViewComand}"/>
+            <ListBox ItemsSource="{Binding Сurrencies}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding symbol}" />
+                            <TextBlock Text="{Binding priceUsd}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+
+            </ListBox>
         </StackPanel>
 
         <ContentControl Grid.Column="1" Content="{Binding Path= NavigationService.CurrentView}"/>
