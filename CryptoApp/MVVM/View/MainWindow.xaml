@@ -7,6 +7,17 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0">
+            <Button Content="Home" Command="{Binding Path= NavigateToHomeViewComand}"/>
+            <Button Content="Info" Command="{Binding Path= NavigateToInfoViewComand}"/>
+        </StackPanel>
+
+        <ContentControl Grid.Column="1" Content="{Binding Path= NavigationService.CurrentView}"/>
 
     </Grid>
 </Window>
