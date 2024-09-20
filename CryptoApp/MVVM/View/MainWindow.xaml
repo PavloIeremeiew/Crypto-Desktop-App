@@ -18,8 +18,19 @@
 
         <StackPanel Grid.Column="0">
             <Button Content="Home" Command="{Binding Path= NavigateToHomeViewComand}"/>
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" Text="{Binding FilterText}" />
+                <Button Grid.Column="1" Content="X" Command="{Binding Path= ClearFilterTextCommand}"/>
+                <Button Grid.Column="2" Content="Q" Command="{Binding Path= FilterListCommand}"/>
+            </Grid>
 
-            <ItemsControl  ItemsSource="{Binding Сurrencies}">
+            <ScrollViewer Height="300">
+                <ItemsControl  ItemsSource="{Binding Сurrencies}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Button Content="{Binding symbol}" 
@@ -30,6 +41,8 @@
                 </ItemsControl.ItemTemplate>
 
             </ItemsControl>
+            </ScrollViewer>
+            
         </StackPanel>
 
         <ContentControl Grid.Column="1" Content="{Binding Path= NavigationService.CurrentView}"/>

@@ -1,4 +1,5 @@
 ﻿using CryptoApp.Core;
+using CryptoApp.FixedData.Const;
 using CryptoApp.MVVM.Model;
 using CryptoApp.Services.Interfaces;
 using System.Collections.ObjectModel;
@@ -18,11 +19,24 @@ namespace CryptoApp.MVVM.ViewModel
                 OnPropertyChanged();
             }
         }
+        private string _filterText = string.Empty;
+        public string FilterText
+        {
+            get => _filterText;
+            set
+            {
+                _filterText = value;
+                OnPropertyChanged();
+            }
+        }
 
         public RelayCommand NavigateToHomeViewComand { get; set; }
         public RelayCommand NavigateToInfoViewComand { get; set; }
+        public RelayCommand FilterListCommand { get; set; }
+        public RelayCommand ClearFilterTextCommand { get; set; }
 
         public ObservableCollection<CryptoCurrency> Сurrencies { get; set; } = new();
+        private List<CryptoCurrency> _currenciesList { get; set; } = new();
 
         public MainViewModel(INavigationService navigationService, ICryptoСurrenciesCollection collection)
         {
@@ -34,20 +48,42 @@ namespace CryptoApp.MVVM.ViewModel
                 await _collection.SetSelectedCryptoCurrencyById((string)o);
                 NavigationService.NavigateTo<InfoViewModel>();
             }, o => true);
+            FilterListCommand = new RelayCommand(o => FilterPeople(),o=>true);
+            ClearFilterTextCommand = new RelayCommand(o => FilterText= string.Empty, o => true);
 
-            
+
             _ = LoadList();
             NavigationService.NavigateTo<HomeViewModel>();
         }
 
         private async Task LoadList()
         {
+            _currenciesList = await _collection.GetCryptoCurrencies();
+            PrintList(_currenciesList);
+        }
+        private void PrintList(List<CryptoCurrency> list)
+        {
             Сurrencies.Clear();
-            var list = await _collection.GetCryptoCurrencies();
             foreach (var currency in list)
             {
                 Сurrencies.Add(currency);
             }
         }
+        private void FilterPeople()
+        {
+            List<CryptoCurrency> list;
+            if (string.IsNullOrEmpty(FilterText))
+            {
+                list = _currenciesList;
+            }
+            else
+            {
+                list = _currenciesList.Where(p =>
+                    p.name!.Contains(FilterText, StringComparison.OrdinalIgnoreCase) ||
+                    p.symbol!.Contains(FilterText, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+            PrintList(list);
+        }
+
     }
 }
