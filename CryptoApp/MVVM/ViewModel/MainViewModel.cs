@@ -9,7 +9,7 @@ namespace CryptoApp.MVVM.ViewModel
 {
     public class MainViewModel : Core.ViewModel
     {
-        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly ICryptoСurrenciesCollection _collection;
         private INavigationService? _navigationService;
         public INavigationService NavigationService
         {
@@ -23,35 +23,27 @@ namespace CryptoApp.MVVM.ViewModel
 
         public RelayCommand NavigateToHomeViewComand { get; set; }
         public RelayCommand NavigateToInfoViewComand { get; set; }
+        public RelayCommand LoadListComand { get; set; }
 
         public ObservableCollection<CryptoCurrency> Сurrencies { get; set; } = new();
 
-        public MainViewModel(INavigationService navigationService, IHttpClientFactory httpClientFactory)
+        public MainViewModel(INavigationService navigationService, ICryptoСurrenciesCollection collection)
         {
             NavigationService = navigationService;
             NavigateToHomeViewComand = new RelayCommand(o => { NavigationService.NavigateTo<HomeViewModel>(); }, o => true);
             NavigateToInfoViewComand = new RelayCommand(o => { NavigationService.NavigateTo<InfoViewModel>(); }, o => true);
-            _httpClientFactory = httpClientFactory;//
 
-            _ = LoadСurrencyAsync();
+            _collection = collection;
+            _=LoadList();
         }
 
-
-
-        public async Task LoadСurrencyAsync()
+        private async Task LoadList()
         {
-            var client = _httpClientFactory.CreateClient("CryptoСurrenciesList");
-            var response = await client.GetAsync(String.Empty);
-            if (response.IsSuccessStatusCode)
+            Сurrencies.Clear();
+            var list = await _collection.GetCryptoCurrencies();
+            foreach (var currency in list)
             {
-                var rootObj = await response.Content.ReadFromJsonAsync<CryptoСurrenciesList>();
-                var currencies = rootObj!.data;
-
-                Сurrencies.Clear();
-                foreach (var currency in currencies!)
-                {
-                    Сurrencies.Add(currency);
-                }
+                Сurrencies.Add(currency);
             }
         }
     }
