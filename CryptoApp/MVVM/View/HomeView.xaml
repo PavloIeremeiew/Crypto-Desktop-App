@@ -11,19 +11,24 @@
         <local1:StringToRoundedDecimalConverter x:Key="StringToRoundedDecimalConverter" />
     </UserControl.Resources>
     <Grid>
-        <ListBox ItemsSource="{Binding Сurrencies}">
-            <ListBox.ItemTemplate>
+        <ItemsControl  ItemsSource="{Binding Сurrencies}">
+            <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding rank}" />
-                        <TextBlock Text=". " />
-                        <TextBlock Text="{Binding symbol}" />
-                        <TextBlock Text=": $" />
-                        <TextBlock Text="{Binding priceUsd, Converter={StaticResource StringToRoundedDecimalConverter}, ConverterParameter=2}" />
-                    </StackPanel>
+                    <Button   Command="{Binding  DataContext.NavigateToInfoViewComand, 
+                        RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                              CommandParameter="{Binding id}">
+                        <Button.Content>
+                            <TextBlock>
+                                <Run Text="{Binding rank}" />
+                                <Run Text=". " />
+                                <Run Text="{Binding symbol}"/>
+                                <Run Text=": $"/>
+                                <Run Text="{Binding priceUsd, Converter={StaticResource StringToRoundedDecimalConverter}, ConverterParameter=2}" />
+                            </TextBlock>
+                        </Button.Content>
+                    </Button>
                 </DataTemplate>
-            </ListBox.ItemTemplate>
-
-        </ListBox>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 </UserControl>

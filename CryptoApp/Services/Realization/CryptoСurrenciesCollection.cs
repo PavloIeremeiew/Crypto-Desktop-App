@@ -21,22 +21,14 @@ namespace CryptoApp.Services.Realization
                 return _cryptoCurrencies!;
         }
 
-        public CryptoCurrency SelectedCryptoCurrency
+        public async Task<CryptoCurrency> GetSelectedCryptoCurrency()
         {
-            get
-            {
                 if (_selectedCryptoCurrency == null)
                 {
-                    _selectedCryptoCurrency = _cryptoCurrencies![0];
+                    _selectedCryptoCurrency = (await GetCryptoCurrencies())[0];
                 }
 
-                return _selectedCryptoCurrency;
-            }
-
-            private set
-            {
-                _selectedCryptoCurrency = value;
-            }
+                return _selectedCryptoCurrency!;
         }
 
         public CryptoСurrenciesCollection(IHttpClientFactory httpClientFactory)
@@ -44,9 +36,9 @@ namespace CryptoApp.Services.Realization
             _httpClientFactory = httpClientFactory;
         }
 
-        public void SetSelectedCryptoCurrencyById(string id)
+        public async Task SetSelectedCryptoCurrencyById(string id)
         {
-            _selectedCryptoCurrency = _cryptoCurrencies!.FirstOrDefault(c => c.id == id);
+            _selectedCryptoCurrency = (await GetCryptoCurrencies()).FirstOrDefault(c => c.id == id);
         }
 
         public async Task LoadСurrencyAsync()

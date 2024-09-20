@@ -44,11 +44,7 @@ namespace CryptoApp
             services.AddSingleton<HomeViewModel>();
             services.AddSingleton<InfoViewModel>();
             services.AddSingleton<ICryptoСurrenciesCollection,CryptoСurrenciesCollection>();
-            services.AddSingleton<INavigationService, NavigationService>(provider => new NavigationService(provider.GetRequiredService<Func<Type, ViewModel>>())
-            {
-                CurrentView = provider.GetRequiredService<HomeViewModel>()
-            }
-                );
+            services.AddSingleton<INavigationService, NavigationService>();
 
             services.AddSingleton<Func<Type, ViewModel>>(provider => viewType => (ViewModel)provider.GetRequiredService(viewType));
         }

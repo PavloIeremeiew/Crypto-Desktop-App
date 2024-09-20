@@ -26,6 +26,7 @@ namespace CryptoApp.Services.Realization
         {
             ViewModel viewModel =_viewModelFactory.Invoke(typeof(T));
             CurrentView = viewModel;
+            CurrentView.LoadView();
         }
     }
 }

@@ -2,8 +2,6 @@
 using CryptoApp.MVVM.Model;
 using CryptoApp.Services.Interfaces;
 using System.Collections.ObjectModel;
-using System.Net.Http;
-using System.Net.Http.Json;
 
 namespace CryptoApp.MVVM.ViewModel
 {
@@ -29,11 +27,17 @@ namespace CryptoApp.MVVM.ViewModel
         public MainViewModel(INavigationService navigationService, ICryptoСurrenciesCollection collection)
         {
             NavigationService = navigationService;
-            NavigateToHomeViewComand = new RelayCommand(o => { NavigationService.NavigateTo<HomeViewModel>(); }, o => true);
-            NavigateToInfoViewComand = new RelayCommand(o => { NavigationService.NavigateTo<InfoViewModel>(); }, o => true);
-
             _collection = collection;
-            _=LoadList();
+            NavigateToHomeViewComand = new RelayCommand(o => { NavigationService.NavigateTo<HomeViewModel>(); }, o => true);
+            NavigateToInfoViewComand = new RelayCommand(async o =>
+            {
+                await _collection.SetSelectedCryptoCurrencyById((string)o);
+                NavigationService.NavigateTo<InfoViewModel>();
+            }, o => true);
+
+            
+            _ = LoadList();
+            NavigationService.NavigateTo<HomeViewModel>();
         }
 
         private async Task LoadList()

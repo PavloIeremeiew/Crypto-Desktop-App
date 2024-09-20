@@ -8,5 +8,8 @@ namespace CryptoApp.Core
 {
     public class ViewModel: ObservableObject
     {
+        public virtual void LoadView()
+        {
+        }
     }
 }

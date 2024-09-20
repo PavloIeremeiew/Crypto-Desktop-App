@@ -10,7 +10,7 @@ namespace CryptoApp.Services.Interfaces
     public interface ICryptoСurrenciesCollection
     {
         public  Task<List<CryptoCurrency>> GetCryptoCurrencies();
-        public CryptoCurrency SelectedCryptoCurrency { get; }
-        public void SetSelectedCryptoCurrencyById(string Id);
+        public Task<CryptoCurrency> GetSelectedCryptoCurrency();
+        public Task SetSelectedCryptoCurrencyById(string Id);
     }
 }

@@ -18,18 +18,18 @@
 
         <StackPanel Grid.Column="0">
             <Button Content="Home" Command="{Binding Path= NavigateToHomeViewComand}"/>
-            <Button Content="Info" Command="{Binding Path= NavigateToInfoViewComand}"/>
-            <ListBox ItemsSource="{Binding Сurrencies}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding symbol}" />
-                            <TextBlock Text="{Binding priceUsd, Converter={StaticResource StringToRoundedDecimalConverter}, ConverterParameter=2}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
 
-            </ListBox>
+            <ItemsControl  ItemsSource="{Binding Сurrencies}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Content="{Binding symbol}" 
+                                Command="{Binding  DataContext.NavigateToInfoViewComand,
+                            RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                CommandParameter="{Binding id}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+
+            </ItemsControl>
         </StackPanel>
 
         <ContentControl Grid.Column="1" Content="{Binding Path= NavigationService.CurrentView}"/>
