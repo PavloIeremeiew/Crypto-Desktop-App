@@ -23,7 +23,6 @@ namespace CryptoApp.MVVM.ViewModel
 
         public RelayCommand NavigateToHomeViewComand { get; set; }
         public RelayCommand NavigateToInfoViewComand { get; set; }
-        public RelayCommand LoadListComand { get; set; }
 
         public ObservableCollection<CryptoCurrency> Сurrencies { get; set; } = new();
 

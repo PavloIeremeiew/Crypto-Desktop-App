@@ -8,7 +8,7 @@ namespace CryptoApp.MVVM.Model
 {
     class CryptoСurrenciesList
     {
-        public List<CryptoCurrency> data { get; set; }
+        public List<CryptoCurrency>? data { get; set; }
         public long timestamp { get; set; }
     }
 }

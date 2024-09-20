@@ -3,9 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CryptoApp"
+        xmlns:local="clr-namespace:CryptoApp" 
+        xmlns:local1="clr-namespace:CryptoApp.Services.Realization"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <local1:StringToRoundedDecimalConverter x:Key="StringToRoundedDecimalConverter" />
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"/>
@@ -20,7 +24,7 @@
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{Binding symbol}" />
-                            <TextBlock Text="{Binding priceUsd}" />
+                            <TextBlock Text="{Binding priceUsd, Converter={StaticResource StringToRoundedDecimalConverter}, ConverterParameter=2}" />
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
