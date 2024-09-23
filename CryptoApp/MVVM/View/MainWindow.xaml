@@ -6,18 +6,19 @@
         xmlns:local="clr-namespace:CryptoApp" 
         xmlns:local1="clr-namespace:CryptoApp.Services.Realization"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="675" Width="1200"
+        >
     <Window.Resources>
         <local1:StringToRoundedDecimalConverter x:Key="StringToRoundedDecimalConverter" />
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0">
-            <Button Content="Home" Command="{Binding Path= NavigateToHomeViewComand}"/>
+        <StackPanel Grid.Column="0" Background="{DynamicResource NavigationColumnBackgroundColor}">
+            <Button Style="{StaticResource HomeButton}" Content="CRYPTO" Command="{Binding Path= NavigateToHomeViewComand}"/>
             <Grid >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="4*"/>
@@ -29,7 +30,7 @@
                 <Button Grid.Column="2" Content="Q" Command="{Binding Path= FilterListCommand}"/>
             </Grid>
 
-            <ScrollViewer Height="300">
+            <ScrollViewer Height="300" Style="{StaticResource NavigationList}" >
                 <ItemsControl  ItemsSource="{Binding Сurrencies}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>

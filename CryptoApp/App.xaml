@@ -5,11 +5,19 @@
              xmlns:viewModel="clr-namespace:CryptoApp.MVVM.ViewModel" 
              xmlns:veiw="clr-namespace:CryptoApp.MVVM.View">
     <Application.Resources>
-        <DataTemplate DataType="{x:Type TypeName = viewModel:HomeViewModel}">
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Theme/HomeButtonStyle.xaml"/>
+                <ResourceDictionary Source="Theme/DarkTheme.xaml"/>
+                <ResourceDictionary Source="Theme/NavigationListStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type TypeName = viewModel:HomeViewModel}">
             <veiw:HomeView/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type TypeName = viewModel:InfoViewModel}">
             <veiw:InfoView/>
         </DataTemplate>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
