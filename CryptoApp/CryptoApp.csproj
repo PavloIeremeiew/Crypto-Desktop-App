@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\Cancel.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
   </ItemGroup>
@@ -16,7 +20,10 @@
   <ItemGroup>
     <Folder Include="FixedData\Enum\" />
     <Folder Include="Fonts\" />
-    <Folder Include="Images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Cancel.png" />
   </ItemGroup>
 
 </Project>
