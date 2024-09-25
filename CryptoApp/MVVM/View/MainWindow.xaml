@@ -30,7 +30,7 @@
                 <Button Grid.Column="2" Content="Q" Command="{Binding Path= FilterListCommand}"/>
             </Grid>
 
-            <ScrollViewer Height="300" Style="{StaticResource NavigationList}" >
+            <ScrollViewer Height="400" Style="{StaticResource NavigationList}" >
                 <ItemsControl  ItemsSource="{Binding Сurrencies}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
