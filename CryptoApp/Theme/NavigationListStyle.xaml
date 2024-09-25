@@ -72,7 +72,7 @@
                 <ControlTemplate TargetType="{x:Type Thumb}">
                     <Border x:Name="rectangle"
                                 SnapsToDevicePixels="True"
-                                Background="Yellow"
+                                Background="{DynamicResource NavigationColumnBackgroundColor}"
                                 CornerRadius="3"
                                 Height="{TemplateBinding Height}"
                                 Width="{TemplateBinding Width}"/>
@@ -84,8 +84,8 @@
     <Style TargetType="{x:Type ScrollBar}">
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="false"/>
-        <Setter Property="Width" Value="14"/>
-        <Setter Property="Margin" Value="-14 0 0 0" />
+        <Setter Property="Width" Value="20"/>
+
         <Setter Property="MinWidth" Value="{Binding Width, RelativeSource={RelativeSource Self}}"/>
         <Setter Property="Template">
             <Setter.Value>
