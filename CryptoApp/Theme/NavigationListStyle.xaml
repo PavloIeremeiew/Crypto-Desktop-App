@@ -72,10 +72,8 @@
                 <ControlTemplate TargetType="{x:Type Thumb}">
                     <Border x:Name="rectangle"
                                 SnapsToDevicePixels="True"
-                                Background="{DynamicResource NavigationColumnBackgroundColor}"
-                                CornerRadius="3"
-                                Height="{TemplateBinding Height}"
-                                Width="{TemplateBinding Width}"/>
+                                Background="{DynamicResource NavigationListScrollBarThumbColor}"
+                                CornerRadius="6"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -95,7 +93,7 @@
                             <Track x:Name="PART_Track"
                                IsDirectionReversed="true"
                                IsEnabled="{TemplateBinding IsMouseOver}"
-                               Width="6"
+                               Width="8"
                                HorizontalAlignment="Center">
                                 <Track.DecreaseRepeatButton>
                                     <RepeatButton Opacity="0" Command="{x:Static ScrollBar.PageUpCommand}" />

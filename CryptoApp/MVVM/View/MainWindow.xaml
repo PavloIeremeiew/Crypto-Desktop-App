@@ -33,11 +33,11 @@
             <ScrollViewer Height="400" Style="{StaticResource NavigationList}" >
                 <ItemsControl  ItemsSource="{Binding Сurrencies}">
                 <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Button Content="{Binding symbol}" 
+                        <DataTemplate>
+                            <Button Content="{Binding symbol}" Style="{StaticResource NavigationListButton}"
                                 Command="{Binding  DataContext.NavigateToInfoViewComand,
                             RelativeSource={RelativeSource AncestorType=ItemsControl}}"
-                                CommandParameter="{Binding id}"/>
+                                CommandParameter="{Binding id}" />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
 

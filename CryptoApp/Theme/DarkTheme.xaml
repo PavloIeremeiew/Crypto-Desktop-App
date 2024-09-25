@@ -1,6 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <SolidColorBrush x:Key="NavigationColumnBackgroundColor" Color="#231A3C"/>
+    <SolidColorBrush x:Key="NavigationListScrollBarThumbColor" Color="#231A3C"/>
     <SolidColorBrush x:Key="TitleTextColor" Color="#CFFFCB"/>
-    <SolidColorBrush x:Key="NavigationListBackgroundColor" Color="#1D0622"/>
+    <SolidColorBrush x:Key="NavigationListBackgroundColor" Color="#1B142F"/>
+    <SolidColorBrush x:Key="NavigationListButtonBackgroundColor" Color="#1D0622"/>
 </ResourceDictionary>
