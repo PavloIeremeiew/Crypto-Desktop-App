@@ -7,23 +7,28 @@
         xmlns:local1="clr-namespace:CryptoApp.Services.Realization" xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
         mc:Ignorable="d"
         Title="MainWindow" Height="675" Width="1200"
-        >
+        Background="{DynamicResource NavigationColumnButtomBackgroundColor}">
     <Window.Resources>
         <local1:StringToRoundedDecimalConverter x:Key="StringToRoundedDecimalConverter" />
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" MinWidth="225" MaxWidth="350"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0" Background="{DynamicResource NavigationColumnBackgroundColor}">
+        <Grid Grid.Column="0" Background="{DynamicResource NavigationColumnBackgroundColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*" MinHeight="300"/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
             <Button Style="{StaticResource HomeButton}" Content="CRYPTO" Command="{Binding Path= NavigateToHomeViewComand}"/>
-            
-                <TextBox Style="{StaticResource SearchTextBox}" Grid.Column="0" Text="{Binding FilterText}" />
 
+            <TextBox Grid.Row="1" Style="{StaticResource SearchTextBox}" />
 
-            <ScrollViewer Height="400" Style="{StaticResource NavigationList}" >
+            <ScrollViewer Grid.Row="2"  Style="{StaticResource NavigationList}" >
                 <ItemsControl  ItemsSource="{Binding Сurrencies}">
                 <ItemsControl.ItemTemplate>
                         <DataTemplate>
@@ -36,8 +41,10 @@
 
             </ItemsControl>
             </ScrollViewer>
-            
-        </StackPanel>
+
+            <Button Grid.Row="3" Style="{StaticResource ThemeButton}" Command="{Binding SwitchTheme}"/>
+
+        </Grid>
 
         <ContentControl Grid.Column="1" Content="{Binding Path= NavigationService.CurrentView}"/>
 

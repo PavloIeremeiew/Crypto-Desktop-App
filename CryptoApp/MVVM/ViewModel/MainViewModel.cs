@@ -2,6 +2,7 @@
 using CryptoApp.MVVM.Model;
 using CryptoApp.Services.Interfaces;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace CryptoApp.MVVM.ViewModel
 {
@@ -33,9 +34,11 @@ namespace CryptoApp.MVVM.ViewModel
         public RelayCommand NavigateToInfoViewComand { get; set; }
         public RelayCommand FilterListCommand { get; set; }
         public RelayCommand ClearFilterTextCommand { get; set; }
+        public RelayCommand SwitchTheme { get; set; }
 
         public ObservableCollection<CryptoCurrency> Сurrencies { get; set; } = new();
         private List<CryptoCurrency> _currenciesList { get; set; } = new();
+        private bool _isThemeLight = false;
 
         public MainViewModel(INavigationService navigationService, ICryptoСurrenciesCollection collection)
         {
@@ -52,6 +55,26 @@ namespace CryptoApp.MVVM.ViewModel
             {
                 FilterText = string.Empty;
                 FilterPeople();
+            }, o => true);
+
+            SwitchTheme = new RelayCommand(o =>
+            {
+                _isThemeLight = !_isThemeLight;
+                string newThemeName, oldThemeName;
+                if (_isThemeLight)
+                {
+                    oldThemeName = $"Theme/DarkTheme.xaml";
+                    newThemeName = $"Theme/LightTheme.xaml";
+                }
+                else
+                {
+                    newThemeName = $"Theme/DarkTheme.xaml";
+                    oldThemeName = $"Theme/LightTheme.xaml";
+                }
+                ResourceDictionary newTheme = (ResourceDictionary)Application.LoadComponent(new Uri(newThemeName, UriKind.Relative));
+                ResourceDictionary oldTheme = (ResourceDictionary)Application.LoadComponent(new Uri(oldThemeName, UriKind.Relative));
+                Application.Current.Resources.MergedDictionaries.Remove(oldTheme);
+                Application.Current.Resources.MergedDictionaries.Add(newTheme);
             }, o => true);
 
 

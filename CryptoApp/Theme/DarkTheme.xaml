@@ -10,4 +10,5 @@
     <SolidColorBrush x:Key="NavigationColumnButtomBackgroundColor" Color="#1D0622"/>
     <BitmapImage x:Key="CencelImage" UriSource="./../Images/CancelDark.png"/>
     <BitmapImage x:Key="SearchImage" UriSource="./../Images/SearchDark.png"/>
+    <BitmapImage x:Key="ThemeImage" UriSource="./../Images/ThemeButtonDark.png"/>
 </ResourceDictionary>
