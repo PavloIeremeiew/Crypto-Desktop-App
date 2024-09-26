@@ -9,7 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\Cancel.png" />
+    <None Remove="Images\CalculatorDark.png" />
+    <None Remove="Images\CalculatorLight.png" />
+    <None Remove="Images\CancelDark.png" />
+    <None Remove="Images\CancelLight.png" />
+    <None Remove="Images\LanguageDark.png" />
+    <None Remove="Images\LanguageLight.png" />
+    <None Remove="Images\SearchDark.png" />
+    <None Remove="Images\SearchLight.png" />
+    <None Remove="Images\ThemeButtonDark.png" />
+    <None Remove="Images\ThemeButtonLight.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,7 +32,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Images\Cancel.png" />
+    <Resource Include="Images\CalculatorDark.png" />
+    <Resource Include="Images\CalculatorLight.png" />
+    <Resource Include="Images\CancelDark.png" />
+    <Resource Include="Images\CancelLight.png" />
+    <Resource Include="Images\LanguageDark.png" />
+    <Resource Include="Images\LanguageLight.png" />
+    <Resource Include="Images\SearchDark.png" />
+    <Resource Include="Images\SearchLight.png" />
+    <Resource Include="Images\ThemeButtonDark.png" />
+    <Resource Include="Images\ThemeButtonLight.png" />
   </ItemGroup>
 
 </Project>
