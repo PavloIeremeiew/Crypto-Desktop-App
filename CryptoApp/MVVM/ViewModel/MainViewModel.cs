@@ -1,4 +1,5 @@
 ﻿using CryptoApp.Core;
+using CryptoApp.FixedData.Const;
 using CryptoApp.MVVM.Model;
 using CryptoApp.Services.Interfaces;
 using System.Collections.ObjectModel;
@@ -34,7 +35,7 @@ namespace CryptoApp.MVVM.ViewModel
         public RelayCommand NavigateToInfoViewComand { get; set; }
         public RelayCommand FilterListCommand { get; set; }
         public RelayCommand ClearFilterTextCommand { get; set; }
-        public RelayCommand SwitchTheme { get; set; }
+        public RelayCommand SwitchThemeCommand { get; set; }
 
         public ObservableCollection<CryptoCurrency> Сurrencies { get; set; } = new();
         private List<CryptoCurrency> _currenciesList { get; set; } = new();
@@ -57,25 +58,7 @@ namespace CryptoApp.MVVM.ViewModel
                 FilterPeople();
             }, o => true);
 
-            SwitchTheme = new RelayCommand(o =>
-            {
-                _isThemeLight = !_isThemeLight;
-                string newThemeName, oldThemeName;
-                if (_isThemeLight)
-                {
-                    oldThemeName = $"Theme/DarkTheme.xaml";
-                    newThemeName = $"Theme/LightTheme.xaml";
-                }
-                else
-                {
-                    newThemeName = $"Theme/DarkTheme.xaml";
-                    oldThemeName = $"Theme/LightTheme.xaml";
-                }
-                ResourceDictionary newTheme = (ResourceDictionary)Application.LoadComponent(new Uri(newThemeName, UriKind.Relative));
-                ResourceDictionary oldTheme = (ResourceDictionary)Application.LoadComponent(new Uri(oldThemeName, UriKind.Relative));
-                Application.Current.Resources.MergedDictionaries.Remove(oldTheme);
-                Application.Current.Resources.MergedDictionaries.Add(newTheme);
-            }, o => true);
+            SwitchThemeCommand = new RelayCommand(o =>SwitchTheme(), o => true);
 
 
             _ = LoadList();
@@ -111,5 +94,24 @@ namespace CryptoApp.MVVM.ViewModel
             PrintList(list);
         }
 
+        private void SwitchTheme()
+        {
+            _isThemeLight = !_isThemeLight;
+            string newThemeName, oldThemeName;
+            if (_isThemeLight)
+            {
+                oldThemeName = MainConstants.DarkThemePath;
+                newThemeName = MainConstants.LightThemePath;
+            }
+            else
+            {
+                newThemeName = MainConstants.DarkThemePath;
+                oldThemeName = MainConstants.LightThemePath;
+            }
+            ResourceDictionary newTheme = (ResourceDictionary)Application.LoadComponent(new Uri(newThemeName, UriKind.Relative));
+            ResourceDictionary oldTheme = (ResourceDictionary)Application.LoadComponent(new Uri(oldThemeName, UriKind.Relative));
+            Application.Current.Resources.MergedDictionaries.Remove(oldTheme);
+            Application.Current.Resources.MergedDictionaries.Add(newTheme);
+        }
     }
 }

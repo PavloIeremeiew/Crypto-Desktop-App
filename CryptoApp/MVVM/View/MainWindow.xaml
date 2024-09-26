@@ -42,7 +42,7 @@
             </ItemsControl>
             </ScrollViewer>
 
-            <Button Grid.Row="3" Style="{StaticResource ThemeButton}" Command="{Binding SwitchTheme}"/>
+            <Button Grid.Row="3" Style="{StaticResource ThemeButton}" Command="{Binding SwitchThemeCommand}"/>
 
         </Grid>
 

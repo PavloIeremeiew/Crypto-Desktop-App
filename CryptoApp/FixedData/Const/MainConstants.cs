@@ -9,5 +9,7 @@ namespace CryptoApp.FixedData.Const
     public class MainConstants
     {
         public const int HomeListCount=10;
+        public const string DarkThemePath = "Theme/DarkTheme.xaml";
+        public const string LightThemePath = "Theme/LightTheme.xaml";
     }
 }
