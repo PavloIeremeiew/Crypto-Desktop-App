@@ -7,5 +7,7 @@
     <SolidColorBrush x:Key="NavigationListBackgroundColor" Color="#1B142F"/>
     <SolidColorBrush x:Key="NavigationListButtonBackgroundColor" Color="#1D0622"/>
     <SolidColorBrush x:Key="SearchBoxBackgroundColor" Color="#1D0622"/>
+    <SolidColorBrush x:Key="NavigationColumnButtomBackgroundColor" Color="#1D0622"/>
     <BitmapImage x:Key="CencelImage" UriSource="./../Images/CancelDark.png"/>
+    <BitmapImage x:Key="SearchImage" UriSource="./../Images/SearchDark.png"/>
 </ResourceDictionary>

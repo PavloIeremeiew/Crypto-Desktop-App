@@ -1,5 +1,4 @@
 ﻿using CryptoApp.Core;
-using CryptoApp.FixedData.Const;
 using CryptoApp.MVVM.Model;
 using CryptoApp.Services.Interfaces;
 using System.Collections.ObjectModel;
@@ -48,8 +47,12 @@ namespace CryptoApp.MVVM.ViewModel
                 await _collection.SetSelectedCryptoCurrencyById((string)o);
                 NavigationService.NavigateTo<InfoViewModel>();
             }, o => true);
-            FilterListCommand = new RelayCommand(o => FilterPeople(),o=>true);
-            ClearFilterTextCommand = new RelayCommand(o => FilterText= string.Empty, o => true);
+            FilterListCommand = new RelayCommand(o => FilterPeople(), o => true);
+            ClearFilterTextCommand = new RelayCommand(o =>
+            {
+                FilterText = string.Empty;
+                FilterPeople();
+            }, o => true);
 
 
             _ = LoadList();
