@@ -11,4 +11,5 @@
     <BitmapImage x:Key="CencelImage" UriSource="./../Images/CancelLight.png"/>
     <BitmapImage x:Key="SearchImage" UriSource="./../Images/SearchLight.png"/>
     <BitmapImage x:Key="ThemeImage" UriSource="./../Images/ThemeButtonLight.png"/>
+    <BitmapImage x:Key="LanguageImage" UriSource="./../Images/LanguageLight.png"/>
 </ResourceDictionary>

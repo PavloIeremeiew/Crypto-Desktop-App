@@ -13,6 +13,7 @@
                 <ResourceDictionary Source="Style/NavigationListButtonStyle.xaml"/>
                 <ResourceDictionary Source="Style/SearchTextBoxStyle.xaml"/>
                 <ResourceDictionary Source="Style/ThemeButtonStyle.xaml"/>
+                <ResourceDictionary Source="Style/LanguageSelectionStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type TypeName = viewModel:HomeViewModel}">

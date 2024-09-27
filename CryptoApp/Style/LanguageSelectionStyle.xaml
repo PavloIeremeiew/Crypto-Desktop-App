@@ -1,0 +1,82 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style TargetType="ComboBox" x:Key="LanguageSelection">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ComboBox">
+                    <Grid>
+                       
+                        <Border Name="Border" 
+                                    Background="{TemplateBinding Background}" 
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="1"
+                                    CornerRadius="10"
+                                    Padding="5"
+                                    Margin="-40,-1,-12,-1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30" />
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{DynamicResource LanguageImage}" Width="20"  
+                                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                                       Stretch="Uniform"/>
+                                <ContentPresenter  Grid.Column="1"
+                                        Content="{TemplateBinding SelectionBoxItem}" 
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Left"
+                                        Margin="5,0,0,0" />
+                                <ToggleButton Grid.Column="1" DockPanel.Dock="Right"
+                                                  Name="toggleButton"
+                                                  Focusable="False"
+                                                  IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                                  ClickMode="Press">
+                                    <ToggleButton.Template>
+                                        <ControlTemplate>
+                                            <Grid  Background="Transparent">
+                                                <Path x:Name="Arrow"
+                                                          Data="M 0 0 L 4 4 L 8 0 Z"
+                                                          HorizontalAlignment="Right"
+                                                          VerticalAlignment="Center"
+                                                          Margin="0,0,5,0"
+                                                          Fill="{DynamicResource TitleTextColor}"/>
+                                            </Grid>
+                                        </ControlTemplate>
+                                    </ToggleButton.Template>
+                                </ToggleButton>
+                            </Grid>
+                        </Border>
+                        <Popup Name="PART_Popup"
+                                   Placement="Bottom"
+                                   IsOpen="{TemplateBinding IsDropDownOpen}"
+                                   AllowsTransparency="True"
+                                   Focusable="False"
+                                   PopupAnimation="Slide">
+                            <Grid Name="DropDown"
+                                      SnapsToDevicePixels="True"
+                                      MinWidth="{TemplateBinding ActualWidth}"
+                                      MaxHeight="200"
+                                      Background="{DynamicResource NavigationColumnButtomBackgroundColor}"
+                                      >
+
+                                <ScrollViewer  SnapsToDevicePixels="True">
+                                    <StackPanel IsItemsHost="True"
+                                                    KeyboardNavigation.DirectionalNavigation="Contained"/>
+                                </ScrollViewer>
+
+                            </Grid>
+                        </Popup>
+                    </Grid>
+                    
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Background" Value="{DynamicResource NavigationColumnButtomBackgroundColor}"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{DynamicResource TitleTextColor}"/>
+        <Setter Property="Margin" Value="20,0,30,0"/>
+        <Setter Property="Height" Value="32"/>
+    </Style>
+
+</ResourceDictionary>
