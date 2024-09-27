@@ -1,8 +1,11 @@
 ﻿using CryptoApp.Core;
 using CryptoApp.FixedData.Const;
+using CryptoApp.FixedData.Enum;
 using CryptoApp.MVVM.Model;
 using CryptoApp.Services.Interfaces;
 using System.Collections.ObjectModel;
+using System.Globalization;
+using CryptoApp.Localization;
 using System.Windows;
 
 namespace CryptoApp.MVVM.ViewModel
@@ -20,6 +23,53 @@ namespace CryptoApp.MVVM.ViewModel
                 OnPropertyChanged();
             }
         }
+
+        private Language _selectedLanguage = Language.English;
+        public Language SelectedLanguage
+        {
+            get => _selectedLanguage;
+            set
+            {
+                _selectedLanguage = value;
+                switch (_selectedLanguage)
+                {
+
+                    case Language.Ukrainian:
+                        Thread.CurrentThread.CurrentUICulture = new CultureInfo("uk-UA");
+                        break;
+                    case Language.English:
+                    default:
+                        Thread.CurrentThread.CurrentUICulture = new CultureInfo("");
+                        break;
+                     
+                }
+                OnPropertyChanged();
+                LoadView();
+                NavigationService.CurrentView.LoadView();
+            }
+        }
+
+        private string _title = string.Empty;
+        public string Title 
+        {  
+            get => _title;
+            set {
+                _title = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _search = string.Empty;
+        public string Search
+        {
+            get => _search;
+            set
+            {
+                _search = value;
+                OnPropertyChanged();
+            }
+        }
+
         private string _filterText = string.Empty;
         public string FilterText
         {
@@ -38,6 +88,7 @@ namespace CryptoApp.MVVM.ViewModel
         public RelayCommand SwitchThemeCommand { get; set; }
 
         public ObservableCollection<CryptoCurrency> Сurrencies { get; set; } = new();
+        public ObservableCollection<Language> Languages { get; set; } = new() { Language.English, Language.Ukrainian };
         private List<CryptoCurrency> _currenciesList { get; set; } = new();
         private bool _isThemeLight = false;
 
@@ -58,11 +109,18 @@ namespace CryptoApp.MVVM.ViewModel
                 FilterPeople();
             }, o => true);
 
-            SwitchThemeCommand = new RelayCommand(o =>SwitchTheme(), o => true);
+            SwitchThemeCommand = new RelayCommand(o => SwitchTheme(), o => true);
 
 
             _ = LoadList();
             NavigationService.NavigateTo<HomeViewModel>();
+            LoadView();
+        }
+        public override void LoadView()
+        {
+            base.LoadView();
+            Title =  Resource.Title;
+            Search = Resource.Search;
         }
 
         private async Task LoadList()

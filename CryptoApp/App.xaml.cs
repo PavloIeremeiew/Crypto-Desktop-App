@@ -18,6 +18,7 @@ namespace CryptoApp
             
         public App()
         {
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(""); 
             IServiceCollection services = new ServiceCollection();
             ConfigureServices(services);
 
