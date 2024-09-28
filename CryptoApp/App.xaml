@@ -8,12 +8,12 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Theme/DarkTheme.xaml"/>
-                <ResourceDictionary Source="Style/HomeButtonStyle.xaml"/>
-                <ResourceDictionary Source="Style/NavigationListStyle.xaml"/>
-                <ResourceDictionary Source="Style/NavigationListButtonStyle.xaml"/>
-                <ResourceDictionary Source="Style/SearchTextBoxStyle.xaml"/>
-                <ResourceDictionary Source="Style/ThemeButtonStyle.xaml"/>
-                <ResourceDictionary Source="Style/LanguageSelectionStyle.xaml"/>
+                <ResourceDictionary Source="Style/Main/HomeButtonStyle.xaml"/>
+                <ResourceDictionary Source="Style/Main/NavigationListStyle.xaml"/>
+                <ResourceDictionary Source="Style/Main/NavigationListButtonStyle.xaml"/>
+                <ResourceDictionary Source="Style/Main/SearchTextBoxStyle.xaml"/>
+                <ResourceDictionary Source="Style/Main/ThemeButtonStyle.xaml"/>
+                <ResourceDictionary Source="Style/Main/LanguageSelectionStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type TypeName = viewModel:HomeViewModel}">
