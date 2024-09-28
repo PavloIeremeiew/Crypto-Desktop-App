@@ -2,8 +2,11 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <SolidColorBrush x:Key="NavigationColumnBackgroundColor" Color="#CEDAFF"/>
     <SolidColorBrush x:Key="NavigationListScrollBarThumbColor" Color="#CEDAFF"/>
+    <SolidColorBrush x:Key="TopTenListButtonBackgroundColor" Color="#CEDAFF"/>
     <SolidColorBrush x:Key="TitleTextColor" Color="#39392A"/>
     <SolidColorBrush x:Key="SearchTextColor" Color="#9E9F83"/>
+    <SolidColorBrush x:Key="AdditionalNumberTextColor" Color="#8CAB44"/>
+    <SolidColorBrush x:Key="NegativeNumberTextColor" Color="#FF3F3F"/>
     <SolidColorBrush x:Key="NavigationListBackgroundColor" Color="#B8C9FF"/>
     <SolidColorBrush x:Key="NavigationListButtonBackgroundColor" Color="#E1E2FF"/>
     <SolidColorBrush x:Key="SearchBoxBackgroundColor" Color="#E1E2FF"/>

@@ -4,29 +4,20 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CryptoApp.MVVM.View" 
-             xmlns:local1="clr-namespace:CryptoApp.Services.Realization"
+             xmlns:services="clr-namespace:CryptoApp.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
-        <local1:StringToRoundedDecimalConverter x:Key="StringToRoundedDecimalConverter" />
+        <services:StringToRoundedDecimalConverter x:Key="StringToRoundedDecimalConverter" />
     </UserControl.Resources>
     <Grid>
         <ItemsControl  ItemsSource="{Binding Сurrencies}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Button   Command="{Binding  DataContext.NavigateToInfoViewComand, 
+                    <Button Style="{StaticResource TopTenListButton}"
+                            Command="{Binding  DataContext.NavigateToInfoViewComand, 
                         RelativeSource={RelativeSource AncestorType=ItemsControl}}"
-                              CommandParameter="{Binding id}">
-                        <Button.Content>
-                            <TextBlock>
-                                <Run Text="{Binding rank}" />
-                                <Run Text=". " />
-                                <Run Text="{Binding symbol}"/>
-                                <Run Text=": $"/>
-                                <Run Text="{Binding priceUsd, Converter={StaticResource StringToRoundedDecimalConverter}, ConverterParameter=2}" />
-                            </TextBlock>
-                        </Button.Content>
-                    </Button>
+                              CommandParameter="{Binding id}"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

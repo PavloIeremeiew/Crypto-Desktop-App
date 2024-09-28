@@ -1,9 +1,9 @@
 ﻿using System.Globalization;
 using System.Windows.Data;
 
-namespace CryptoApp.Services.Realization
+namespace CryptoApp.Converters
 {
-    class StringToRoundedDecimalConverter : IValueConverter
+    public class StringToRoundedDecimalConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
