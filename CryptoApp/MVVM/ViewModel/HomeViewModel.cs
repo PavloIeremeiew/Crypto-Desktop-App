@@ -1,5 +1,6 @@
 ﻿using CryptoApp.Core;
 using CryptoApp.FixedData.Const;
+using CryptoApp.Localization;
 using CryptoApp.MVVM.Model;
 using CryptoApp.Services.Interfaces;
 using System.Collections.ObjectModel;
@@ -23,6 +24,17 @@ namespace CryptoApp.MVVM.ViewModel
             }
         }
 
+        private string _homeTitle = string.Empty;
+        public string HomeTitle
+        {
+            get => _homeTitle;
+            set
+            {
+                _homeTitle = value;
+                OnPropertyChanged();
+            }
+        }
+
         public HomeViewModel(INavigationService navigationService, ICryptoСurrenciesCollection collection)
         {
             _collection = collection;
@@ -34,6 +46,13 @@ namespace CryptoApp.MVVM.ViewModel
             }, o => true);
             _ = LoadList();
         }
+
+        public override void LoadView()
+        {
+            base.LoadView();
+            HomeTitle = Resource.HomeTitle;
+        }
+
         private async Task LoadList()
         {
             Сurrencies.Clear();

@@ -11,7 +11,7 @@
         <services:StringToRoundedDecimalConverter x:Key="StringToRoundedDecimalConverter" />
     </UserControl.Resources>
     <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-        <TextBlock Text="Top-10" 
+        <TextBlock Text="{Binding HomeTitle}" 
                    HorizontalAlignment="Center" Margin="20"
                    Foreground="{DynamicResource TitleTextColor}"
                    FontSize="45" FontWeight="ExtraBold"/>
