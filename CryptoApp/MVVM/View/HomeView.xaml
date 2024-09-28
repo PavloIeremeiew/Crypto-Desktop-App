@@ -10,8 +10,17 @@
     <UserControl.Resources>
         <services:StringToRoundedDecimalConverter x:Key="StringToRoundedDecimalConverter" />
     </UserControl.Resources>
-    <Grid>
-        <ItemsControl  ItemsSource="{Binding Сurrencies}">
+    <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <TextBlock Text="Top-10" 
+                   HorizontalAlignment="Center" Margin="20"
+                   Foreground="{DynamicResource TitleTextColor}"
+                   FontSize="45" FontWeight="ExtraBold"/>
+        <ItemsControl  ItemsSource="{Binding Сurrencies}" Width="600">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel HorizontalAlignment="Center" Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Button Style="{StaticResource TopTenListButton}"
@@ -21,5 +30,5 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-    </Grid>
+    </StackPanel>
 </UserControl>

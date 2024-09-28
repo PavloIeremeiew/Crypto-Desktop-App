@@ -39,7 +39,8 @@
                                        FontSize="12"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Center"
-                                       Margin="0,0,10,0">
+                                       Margin="0,0,10,0"
+                                       FontWeight="Bold">
                                 <Run Text="{Binding changePercent24Hr, 
                                     Converter={StaticResource PercentConverter}}"/>
                                 <TextBlock.Style>
