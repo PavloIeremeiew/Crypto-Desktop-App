@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CryptoApp" 
         xmlns:rs="clr-namespace:CryptoApp.Localization" 
         mc:Ignorable="d"
-        Title="MainWindow" Height="675" Width="1200" MinHeight="520" MinWidth="900"
+        Title="{Binding Title}" Height="675" Width="1200" MinHeight="520" MinWidth="900"
         Background="{DynamicResource NavigationColumnButtomBackgroundColor}">
     <Grid>
         <Grid.ColumnDefinitions>

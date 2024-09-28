@@ -11,16 +11,17 @@ namespace CryptoApp.MVVM.ViewModel
 {
     public class InfoViewModel : Core.ViewModel
     {
-        private string _textToShow= string.Empty;
+        
         private ICryptoСurrenciesCollection _collection;
-
-        public string TextToShow
+        
+        private CryptoCurrency? _currency;
+        public CryptoCurrency Currency 
         {
-            get => _textToShow;
+            get => _currency!;
             set
             {
-                _textToShow = value;
-                OnPropertyChanged(nameof(TextToShow));
+                _currency = value;
+                OnPropertyChanged();
             }
         }
 
@@ -30,7 +31,7 @@ namespace CryptoApp.MVVM.ViewModel
         }
         private async Task LoadInfo()
         {
-            TextToShow = (await _collection.GetSelectedCryptoCurrency()).symbol?? string.Empty;
+            Currency = await _collection.GetSelectedCryptoCurrency();
         }
         public override void LoadView()
         {
