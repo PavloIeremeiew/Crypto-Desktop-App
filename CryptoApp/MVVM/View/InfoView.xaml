@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:CryptoApp.MVVM.View"
              xmlns:converters="clr-namespace:CryptoApp.Converters"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" SnapsToDevicePixels="True">
     <UserControl.Resources>
         <converters:NullStringFormatingConverter x:Key="NullStringFormatingConverter" />
     </UserControl.Resources>

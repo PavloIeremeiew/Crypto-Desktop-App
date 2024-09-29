@@ -7,12 +7,18 @@
         xmlns:rs="clr-namespace:CryptoApp.Localization" 
         mc:Ignorable="d"
         Title="{Binding Title}" Height="675" Width="1200" MinHeight="520" MinWidth="900"
-        Background="{DynamicResource NavigationColumnButtomBackgroundColor}">
+        Background="{DynamicResource NavigationColumnButtomBackgroundColor}"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        SnapsToDevicePixels="True" Icon="/Images/LanguageLight.png">
+    <Grid>  
+        
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" MinWidth="225" MaxWidth="350"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
+      
 
         <Grid Grid.Column="0" Background="{DynamicResource NavigationColumnBackgroundColor}">
             <Grid.RowDefinitions>
@@ -54,6 +60,35 @@
         </Grid>
 
         <ContentControl Grid.Column="1" Content="{Binding Path= NavigationService.CurrentView}"/>
+
+    </Grid>
+
+        <Border Background="Transparent" Height="30" 
+                HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                MouseLeftButtonDown="Window_MouseLeftButtonDown">
+            <DockPanel HorizontalAlignment="Right">
+                <Button Content="_" Width="30" 
+                        Height="30" 
+                        Click="MinimizeButton_Click" 
+                        Background="Transparent" 
+                        Foreground="{DynamicResource TitleTextColor}" 
+                        BorderBrush="Transparent" />
+
+                <Button Content="[ ]" 
+                        Width="30" Height="30"                         
+                        Click="MaximizeButton_Click" 
+                        Background="Transparent" 
+                        Foreground="{DynamicResource TitleTextColor}" 
+                        BorderBrush="Transparent" />
+
+                <Button  Content="X" 
+                         Width="30" Height="30"                         
+                         Click="CloseButton_Click" 
+                         Background="Transparent" 
+                         Foreground="{DynamicResource TitleTextColor}" 
+                         BorderBrush="Transparent" />
+            </DockPanel>
+        </Border>
 
     </Grid>
 </Window>
