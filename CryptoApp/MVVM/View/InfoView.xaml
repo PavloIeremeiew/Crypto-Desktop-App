@@ -12,7 +12,7 @@
     </UserControl.Resources>
     <Grid>
         <Grid VerticalAlignment="Center" HorizontalAlignment="Center"
-              MaxHeight="750" MaxWidth="700">
+              MaxHeight="750" Width="700">
             
         
         <Grid.ColumnDefinitions>
@@ -44,7 +44,8 @@
             <TextBlock Text="{Binding Currency.rank,
                     Converter={StaticResource NullStringFormatingConverter}, ConverterParameter=#{0}}" 
                            HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                    Style="{StaticResource InfoTitle}"/>
+                    Style="{StaticResource InfoTitle}"
+                       Margin="2"/>
                 <TextBlock Grid.Column="1" 
                    Text="{Binding Currency.name}" VerticalAlignment="Bottom"
                    Foreground="{DynamicResource TitleTextColor}" FontSize="32" FontWeight="Bold"/>
