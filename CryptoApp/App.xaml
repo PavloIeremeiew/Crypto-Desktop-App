@@ -18,6 +18,7 @@
                 <ResourceDictionary Source="Style/Info/InfoPercentStyle.xaml"/>
                 <ResourceDictionary Source="Style/Info/InfoTitleStyle.xaml"/>
                 <ResourceDictionary Source="Style/Info/InfoValueStyle.xaml"/>
+                <ResourceDictionary Source="Style/Base/FontsStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type TypeName = viewModel:HomeViewModel}">
