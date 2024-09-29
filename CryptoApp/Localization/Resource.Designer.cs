@@ -61,11 +61,65 @@ namespace CryptoApp.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to AVERAGE.
+        /// </summary>
+        internal static string AVERAGE {
+            get {
+                return ResourceManager.GetString("AVERAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CAP.
+        /// </summary>
+        internal static string CAP {
+            get {
+                return ResourceManager.GetString("CAP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Top-10.
         /// </summary>
         internal static string HomeTitle {
             get {
                 return ResourceManager.GetString("HomeTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IN LAST 24 HOURS.
+        /// </summary>
+        internal static string LAST24HOURS {
+            get {
+                return ResourceManager.GetString("LAST24HOURS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MARKET.
+        /// </summary>
+        internal static string MARKET {
+            get {
+                return ResourceManager.GetString("MARKET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to more.
+        /// </summary>
+        internal static string more {
+            get {
+                return ResourceManager.GetString("more", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PRICE.
+        /// </summary>
+        internal static string PRICE {
+            get {
+                return ResourceManager.GetString("PRICE", resourceCulture);
             }
         }
         
@@ -79,11 +133,29 @@ namespace CryptoApp.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SUPPLY.
+        /// </summary>
+        internal static string SUPPLY {
+            get {
+                return ResourceManager.GetString("SUPPLY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CRYPTO.
         /// </summary>
         internal static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VOLUME.
+        /// </summary>
+        internal static string VOLUME {
+            get {
+                return ResourceManager.GetString("VOLUME", resourceCulture);
             }
         }
     }

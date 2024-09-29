@@ -7,6 +7,9 @@
     <SolidColorBrush x:Key="SearchTextColor" Color="#779774"/>
     <SolidColorBrush x:Key="AdditionalNumberTextColor" Color="#FFF824"/>
     <SolidColorBrush x:Key="NegativeNumberTextColor" Color="#FF3636"/>
+    <SolidColorBrush x:Key="InfoTitleTextColor" Color="#B4DAB1"/>
+    <SolidColorBrush x:Key="InfoValueTextColor" Color="#ABCCD8"/>
+    <SolidColorBrush x:Key="InfoValueTextGloomyColor" Color="#41374F"/>
     <SolidColorBrush x:Key="NavigationListBackgroundColor" Color="#1B142F"/>
     <SolidColorBrush x:Key="NavigationListButtonBackgroundColor" Color="#1D0622"/>
     <SolidColorBrush x:Key="SearchBoxBackgroundColor" Color="#1D0622"/>

@@ -126,4 +126,28 @@
   <data name="HomeTitle" xml:space="preserve">
     <value>Топ-10</value>
   </data>
+  <data name="SUPPLY" xml:space="preserve">
+    <value>ПОСТАЧАННЯ</value>
+  </data>
+  <data name="PRICE" xml:space="preserve">
+    <value>ЦІНА</value>
+  </data>
+  <data name="MARKET" xml:space="preserve">
+    <value>РИНОКОВА</value>
+  </data>
+  <data name="CAP" xml:space="preserve">
+    <value>КАП</value>
+  </data>
+  <data name="LAST24HOURS" xml:space="preserve">
+    <value>ЗА ОСТАННІ 24 ГОДИНИ</value>
+  </data>
+  <data name="AVERAGE" xml:space="preserve">
+    <value>СЕРЕДНЯ</value>
+  </data>
+  <data name="VOLUME" xml:space="preserve">
+    <value>ГУЧНІСТЬ</value>
+  </data>
+  <data name="more" xml:space="preserve">
+    <value>більше</value>
+  </data>
 </root>

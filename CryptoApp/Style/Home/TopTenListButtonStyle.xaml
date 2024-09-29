@@ -1,9 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:converters="clr-namespace:CryptoApp.Converters">
-    <converters:StringToRoundedDecimalConverter x:Key="StringToRoundedDecimalConverter" />
     <converters:LessThanZeroConverter x:Key="LessThanZeroConverter" />
     <converters:PercentConverter x:Key="PercentConverter" />
+    <converters:NullStringFormatingConverter x:Key="NullStringFormatingConverter" />
     <Style x:Key="TopTenListButton"  TargetType="{x:Type Button}">
         <Setter Property="Foreground" Value="{DynamicResource TitleTextColor}" />
         <Setter Property="Margin" Value="10" />
@@ -32,7 +32,7 @@
                                 <TextBlock Text="{Binding name}" FontSize="15" FontWeight="DemiBold"/>
                                 <TextBlock FontSize="12">
                                     <Run Text="$"/>   
-                                    <Run Text="{Binding priceUsd, Converter={StaticResource StringToRoundedDecimalConverter}, ConverterParameter=2}" />
+                                    <Run Text="{Binding priceUsd, Converter={StaticResource NullStringFormatingConverter}, ConverterParameter={}{0:F2}}" />
                                 </TextBlock>
                             </StackPanel>
                             <TextBlock Grid.Column="2" 

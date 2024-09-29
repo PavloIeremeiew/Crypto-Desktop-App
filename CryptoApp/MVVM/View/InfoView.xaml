@@ -8,11 +8,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
-        <converters:StringToRoundedDecimalConverter x:Key="StringToRoundedDecimalConverter" />
+        <converters:NullStringFormatingConverter x:Key="NullStringFormatingConverter" />
     </UserControl.Resources>
     <Grid>
         <Grid VerticalAlignment="Center" HorizontalAlignment="Center"
-              MaxHeight="700" MaxWidth="700">
+              MaxHeight="750" MaxWidth="700">
             
         
         <Grid.ColumnDefinitions>
@@ -20,7 +20,7 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
+            <RowDefinition Height="100" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
@@ -30,63 +30,75 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Grid Grid.ColumnSpan="2">
+        <Grid Grid.ColumnSpan="2" Margin="5">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="60"/>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
-            
-            <Label Content="{Binding Currency.rank}" 
-                   ContentStringFormat="#{0}" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
-            <Label Grid.Column="1" 
-                   Content="{Binding Currency.name}" VerticalAlignment="Bottom"/>
-            <Label Grid.Column="1" Grid.Row="1" 
-                   Content="{Binding Currency.symbol}" VerticalAlignment="Top"/>
+
+            <TextBlock Text="{Binding Currency.rank,
+                    Converter={StaticResource NullStringFormatingConverter}, ConverterParameter=#{0}}" 
+                           HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                    Style="{StaticResource InfoTitle}"/>
+                <TextBlock Grid.Column="1" 
+                   Text="{Binding Currency.name}" VerticalAlignment="Bottom"
+                   Foreground="{DynamicResource TitleTextColor}" FontSize="32" FontWeight="Bold"/>
+            <TextBlock Grid.Column="1" Grid.Row="1" 
+                   Text="{Binding Currency.symbol}" VerticalAlignment="Top"
+                       Style="{StaticResource InfoTitle}"/>
 
         </Grid>
 
-        <TextBlock Grid.Row="1" Text="SUPPLY:"  />
-        <TextBlock Grid.Row="2" Text="PRICE:" />
+            <TextBlock Grid.Row="1" Text="{Binding Supply}" Style="{StaticResource InfoTitle}" />
+            <TextBlock Grid.Row="2" Text="{Binding Price}" Style="{StaticResource InfoTitle}" />
             <StackPanel Grid.Row="3" Orientation="Vertical">
-            <TextBlock Text="MARKET" />
-            <TextBlock Text="CAP:" />
-        </StackPanel>
-        <TextBlock Grid.Row="4" Grid.ColumnSpan="2" Text="IN LAST 24 HOURS"/>
+                <TextBlock Text="{Binding Market}" Style="{StaticResource InfoTitle}" />
+                <TextBlock Text="{Binding Cap}"  Style="{StaticResource InfoTitle}" Margin="0,-10,0,0"/>
+            </StackPanel>
+            <TextBlock Grid.Row="4" Grid.ColumnSpan="2" Text="{Binding Last24hours}" 
+                       Foreground="{DynamicResource TitleTextColor}"
+                       FontWeight="Bold" FontSize="32" Margin="0,10,0,5"/>
         
         <StackPanel Grid.Row="5"  Orientation="Vertical">
-            <TextBlock Text="AVERAGE" />
-            <TextBlock Text="PRICE:" />
+                <TextBlock Text="{Binding Avarage}"  Style="{StaticResource InfoTitle}"/>
+                <TextBlock Text="{Binding Price}"  Style="{StaticResource InfoTitle}" Margin="0,-10,0,0"/>
         </StackPanel>
-        <TextBlock Grid.Row="6" Text="VOLUME:" />
-        <!--<TextBlock Grid.Row="7" Text="more...">
-            <Hyperlink NavigateUri ="{Binding Currency.explorer}"/>
-        </TextBlock>-->
-            <TextBlock Grid.Row="1" Grid.Column="1">
-                <Run Text="{Binding Currency.supply,
-                    Converter={StaticResource StringToRoundedDecimalConverter}, ConverterParameter=2}"/>
-                <Run Text="/"/>
-                <Run Text="{Binding Currency.maxSupply,
-                    Converter={StaticResource StringToRoundedDecimalConverter}, ConverterParameter=2}"/>
+            <TextBlock Grid.Row="6" Text="{Binding Volume}"  Style="{StaticResource InfoTitle}"/>
+
+            <TextBlock Grid.Row="7" Style="{StaticResource InfoValue}">
+                <Hyperlink Foreground="{DynamicResource InfoValueTextColor}" Command="{Binding UrlCommand}">
+                    <TextBlock Text="{Binding More}"/>
+                </Hyperlink>
             </TextBlock>
 
-            <TextBlock Grid.Row="2" Grid.Column="1">
-                <Run Text="$"/>
-                <Run Text="{Binding Currency.priceUsd, 
-                    Converter={StaticResource StringToRoundedDecimalConverter}, ConverterParameter=2}" />
-                <Run Text="{Binding Currency.changePercent24Hr, 
-                                    Converter={StaticResource PercentConverter}}"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource InfoValue}">
+                <Run Text="{Binding Currency.supply,
+                   Converter={StaticResource NullStringFormatingConverter}, ConverterParameter={}{0:F2}}"/>
+                <Run Text="{Binding Currency.maxSupply,
+                    Converter={StaticResource NullStringFormatingConverter}, ConverterParameter=/{0:F2}}"
+                     Foreground="{DynamicResource InfoValueTextGloomyColor}"/>
             </TextBlock>
+
+            <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+                <TextBlock Style="{StaticResource InfoValue}" Text="{Binding Currency.priceUsd, 
+                   Converter={StaticResource NullStringFormatingConverter}, ConverterParameter=${0:F2}}" />
+                <TextBlock Style="{StaticResource InfoPercent}" Margin="10" />
+            </StackPanel>
+           
             <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Currency.marketCapUsd,
-                Converter={StaticResource StringToRoundedDecimalConverter}, ConverterParameter=2}"/>
+                Converter={StaticResource NullStringFormatingConverter}, ConverterParameter=${0:F2}}"
+                       Style="{StaticResource InfoValue}"/>
             <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding Currency.vwap24Hr,
-                Converter={StaticResource StringToRoundedDecimalConverter}, ConverterParameter=2}"/>
+                Converter={StaticResource NullStringFormatingConverter}, ConverterParameter=${0:F2}}"
+                       Style="{StaticResource InfoValue}"/>
             <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding Currency.volumeUsd24Hr,
-                Converter={StaticResource StringToRoundedDecimalConverter}, ConverterParameter=2}"/>
+                Converter={StaticResource NullStringFormatingConverter}, ConverterParameter=${0:F2}}"
+                       Style="{StaticResource InfoValue}"/>
         </Grid>
     </Grid>
 </UserControl>

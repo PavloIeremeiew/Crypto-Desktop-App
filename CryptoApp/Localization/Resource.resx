@@ -126,4 +126,28 @@
   <data name="HomeTitle" xml:space="preserve">
     <value>Top-10</value>
   </data>
+  <data name="SUPPLY" xml:space="preserve">
+    <value>SUPPLY</value>
+  </data>
+  <data name="PRICE" xml:space="preserve">
+    <value>PRICE</value>
+  </data>
+  <data name="MARKET" xml:space="preserve">
+    <value>MARKET</value>
+  </data>
+  <data name="CAP" xml:space="preserve">
+    <value>CAP</value>
+  </data>
+  <data name="LAST24HOURS" xml:space="preserve">
+    <value>IN LAST 24 HOURS</value>
+  </data>
+  <data name="AVERAGE" xml:space="preserve">
+    <value>AVERAGE</value>
+  </data>
+  <data name="VOLUME" xml:space="preserve">
+    <value>VOLUME</value>
+  </data>
+  <data name="more" xml:space="preserve">
+    <value>more</value>
+  </data>
 </root>

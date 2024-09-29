@@ -15,6 +15,9 @@
                 <ResourceDictionary Source="Style/Main/ThemeButtonStyle.xaml"/>
                 <ResourceDictionary Source="Style/Main/LanguageSelectionStyle.xaml"/>
                 <ResourceDictionary Source="Style/Home/TopTenListButtonStyle.xaml"/>
+                <ResourceDictionary Source="Style/Info/InfoPercentStyle.xaml"/>
+                <ResourceDictionary Source="Style/Info/InfoTitleStyle.xaml"/>
+                <ResourceDictionary Source="Style/Info/InfoValueStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type TypeName = viewModel:HomeViewModel}">
