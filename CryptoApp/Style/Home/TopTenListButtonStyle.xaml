@@ -29,8 +29,8 @@
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"/>
                             <StackPanel Grid.Column="1" Margin="5">
-                                <TextBlock Text="{Binding name}" FontSize="15" FontWeight="DemiBold"/>
-                                <TextBlock FontSize="12">
+                                <TextBlock Text="{Binding name}" FontSize="13" FontWeight="DemiBold"/>
+                                <TextBlock FontSize="10">
                                     <Run Text="$"/>   
                                     <Run Text="{Binding priceUsd, Converter={StaticResource NullStringFormatingConverter}, ConverterParameter={}{0:F2}}" />
                                 </TextBlock>
