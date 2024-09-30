@@ -57,8 +57,8 @@ namespace CryptoApp.MVVM.ViewModel
         {
             Сurrencies.Clear();
             var list = await _collection.GetCryptoCurrencies();
-            list = list.Where(x => int.Parse(x.rank!) <= MainConstants.HomeListCount)
-                .Take(MainConstants.HomeListCount).ToList();
+            list = list.Where(c => int.Parse(c.rank!) <= MainConstants.HomeListCount)
+                .Take(MainConstants.HomeListCount).OrderBy(c=> int.Parse(c.rank!)).ToList();
             foreach (var currency in list)
             {
                 Сurrencies.Add(currency);
